@@ -41,7 +41,7 @@
             highlightLayer.openPopup();
         }
         var map = L.map('map', {
-            zoomControl:false, maxZoom:21, minZoom:15
+            zoomControl:false, maxZoom:22, minZoom:15
         })
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
@@ -61,19 +61,19 @@
          return tempDiv.innerHTML;
         }
         // add class to format popup if it contains media
-		function addClassToPopupIfMedia(content, popup) {
-			var tempDiv = document.createElement('div');
-			tempDiv.innerHTML = content;
-			if (tempDiv.querySelector('td img')) {
-				popup._contentNode.classList.add('media');
-					// Delay to force the redraw
-					setTimeout(function() {
-						popup.update();
-					}, 10);
-			} else {
-				popup._contentNode.classList.remove('media');
-			}
-		}
+        function addClassToPopupIfMedia(content, popup) {
+            var tempDiv = document.createElement('div');
+            tempDiv.innerHTML = content;
+            if (tempDiv.querySelector('td img')) {
+                popup._contentNode.classList.add('media');
+                    // Delay to force the redraw
+                    setTimeout(function() {
+                        popup.update();
+                    }, 10);
+            } else {
+                popup._contentNode.classList.remove('media');
+            }
+        }
         var title = new L.Control({'position':'topleft'});
         title.onAdd = function (map) {
             this._div = L.DomUtil.create('div', 'info');
@@ -81,7 +81,17 @@
             return this._div;
         };
         title.update = function () {
-            this._div.innerHTML = '<h2>The Trees of Kendal at Ithaca</h2>';
+            this._div.innerHTML = `
+            <h2>The Trees of Kendal at Ithaca</h2>
+            <div id='health-legend'>
+                Tree health (5=best)<br />
+                <img src="legend/kendal_trees_20250703_1_00.png" /> 0
+                <img src="legend/kendal_trees_20250703_1_11.png" /> 1
+                <img src="legend/kendal_trees_20250703_1_22.png" /> 2
+                <img src="legend/kendal_trees_20250703_1_33.png" /> 3
+                <img src="legend/kendal_trees_20250703_1_44.png" /> 4
+                <img src="legend/kendal_trees_20250703_1_55.png" /> 5
+            </div>`;
         };
         title.addTo(map);
         var zoomControl = L.control.zoom({
@@ -100,7 +110,7 @@
             opacity: 1.0,
             attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
             minZoom: 15,
-            maxZoom: 21,
+            maxZoom: 22,
             minNativeZoom: 0,
             maxNativeZoom: 20
         });
@@ -121,27 +131,27 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">tree_id</th>\
+                        <th scope="row">Tree ID:</th>\
                         <td class="visible-with-data" id="tree_id">' + (feature.properties['tree_id'] !== null ? autolinker.link(String(feature.properties['tree_id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">species</th>\
+                        <th scope="row">Species:</th>\
                         <td class="visible-with-data" id="species">' + (feature.properties['species'] !== null ? autolinker.link(String(feature.properties['species']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">health</th>\
+                        <th scope="row">Health:</th>\
                         <td class="visible-with-data" id="health">' + (feature.properties['health'] !== null ? autolinker.link(String(feature.properties['health']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">notes</th>\
+                        <th scope="row">Notes:</th>\
                         <td class="visible-with-data" id="notes">' + (feature.properties['notes'] !== null ? autolinker.link(String(feature.properties['notes']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
+            layer.on('popupopen', function(e) {
+                addClassToPopupIfMedia(content, e.popup);
+            });
+            layer.bindPopup(content, { maxHeight: 400 });
         }
 
         function style_kendal_trees_20250703_1_0(feature) {
@@ -264,20 +274,30 @@
         });
         bounds_group.addLayer(layer_kendal_trees_20250703_1);
         map.addLayer(layer_kendal_trees_20250703_1);
-        var overlaysTree = [
-            {label: 'kendal_trees_20250703<br /><table><tr><td style="text-align: center;"><img src="legend/kendal_trees_20250703_1_00.png" /></td><td>0</td></tr><tr><td style="text-align: center;"><img src="legend/kendal_trees_20250703_1_11.png" /></td><td>1</td></tr><tr><td style="text-align: center;"><img src="legend/kendal_trees_20250703_1_22.png" /></td><td>2</td></tr><tr><td style="text-align: center;"><img src="legend/kendal_trees_20250703_1_33.png" /></td><td>3</td></tr><tr><td style="text-align: center;"><img src="legend/kendal_trees_20250703_1_44.png" /></td><td>4</td></tr><tr><td style="text-align: center;"><img src="legend/kendal_trees_20250703_1_55.png" /></td><td>5</td></tr></table>', layer: layer_kendal_trees_20250703_1},
-            {label: "Google Satellite", layer: layer_GoogleSatellite_0},]
-        var lay = L.control.layers.tree(null, overlaysTree,{
-            //namedToggle: true,
-            //selectorBack: false,
-            //closedSymbol: '&#8862; &#x1f5c0;',
-            //openedSymbol: '&#8863; &#x1f5c1;',
-            //collapseAll: 'Collapse all',
-            //expandAll: 'Expand all',
-            collapsed: false, 
-        });
-        lay.addTo(map);
-		document.addEventListener("DOMContentLoaded", function() {
+//        var overlaysTree = [
+//            { label: `Tree health (5=best)<br />
+//                <table>
+//                    <tr><td style="text-align: center;"><img src="legend/kendal_trees_20250703_1_00.png" /></td><td>0</td></tr>
+//                    <tr><td style="text-align: center;"><img src="legend/kendal_trees_20250703_1_11.png" /></td><td>1</td></tr>
+//                    <tr><td style="text-align: center;"><img src="legend/kendal_trees_20250703_1_22.png" /></td><td>2</td></tr>
+//                    <tr><td style="text-align: center;"><img src="legend/kendal_trees_20250703_1_33.png" /></td><td>3</td></tr>
+//                    <tr><td style="text-align: center;"><img src="legend/kendal_trees_20250703_1_44.png" /></td><td>4</td></tr>
+//                    <tr><td style="text-align: center;"><img src="legend/kendal_trees_20250703_1_55.png" /></td><td>5</td></tr>
+//                </table>`,
+//                layer: layer_kendal_trees_20250703_1
+//            },
+//        ]
+//        var lay = L.control.layers.tree(null, overlaysTree,{
+//            //namedToggle: true,
+//            //selectorBack: false,
+//            //closedSymbol: '&#8862; &#x1f5c0;',
+//            //openedSymbol: '&#8863; &#x1f5c1;',
+//            //collapseAll: 'Collapse all',
+//            //expandAll: 'Expand all',
+//            collapsed: false, 
+//        });
+//        lay.addTo(map);
+        document.addEventListener("DOMContentLoaded", function() {
             // set new Layers List height which considers toggle icon
             function newLayersListHeight() {
                 var layerScrollbarElement = document.querySelector('.leaflet-control-layers-scrollbar');
@@ -291,33 +311,33 @@
             }
             var isLayersListExpanded = true;
             var controlLayersElement = document.querySelector('.leaflet-control-layers');
-            var toggleLayerControl = document.querySelector('.leaflet-control-layers-toggle');
-            // toggle Collapsed/Expanded and apply new Layers List height
-            toggleLayerControl.addEventListener('click', function() {
-                if (isLayersListExpanded) {
-                    controlLayersElement.classList.remove('leaflet-control-layers-expanded');
-                } else {
-                    controlLayersElement.classList.add('leaflet-control-layers-expanded');
-                }
-                isLayersListExpanded = !isLayersListExpanded;
-                newLayersListHeight()
-            });	
-			// apply new Layers List height if toggle layerstree
-			if (controlLayersElement) {
-				controlLayersElement.addEventListener('click', function(event) {
-					var toggleLayerHeaderPointer = event.target.closest('.leaflet-layerstree-header-pointer span');
-					if (toggleLayerHeaderPointer) {
-						newLayersListHeight();
-					}
-				});
-			}
+            // var toggleLayerControl = document.querySelector('.leaflet-control-layers-toggle');
+            // // toggle Collapsed/Expanded and apply new Layers List height
+            // toggleLayerControl.addEventListener('click', function() {
+            //     if (isLayersListExpanded) {
+            //         controlLayersElement.classList.remove('leaflet-control-layers-expanded');
+            //     } else {
+            //         controlLayersElement.classList.add('leaflet-control-layers-expanded');
+            //     }
+            //     isLayersListExpanded = !isLayersListExpanded;
+            //     newLayersListHeight()
+            // });	
+            // apply new Layers List height if toggle layerstree
+            if (controlLayersElement) {
+                controlLayersElement.addEventListener('click', function(event) {
+                    var toggleLayerHeaderPointer = event.target.closest('.leaflet-layerstree-header-pointer span');
+                    if (toggleLayerHeaderPointer) {
+                        newLayersListHeight();
+                    }
+                });
+            }
             // Collapsed/Expanded at Start to apply new height
-            setTimeout(function() {
-                toggleLayerControl.click();
-            }, 10);
-            setTimeout(function() {
-                toggleLayerControl.click();
-            }, 10);
+            // setTimeout(function() {
+            //     toggleLayerControl.click();
+            // }, 10);
+            // setTimeout(function() {
+            //     toggleLayerControl.click();
+            // }, 10);
             // Collapsed touch/small screen
             var isSmallScreen = window.innerWidth < 650;
             if (isSmallScreen) {
@@ -334,22 +354,33 @@
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['tree_id'] !== null?String('<div style="color: #f6f6f6; font-size: 10pt; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['tree_id']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_kendal_trees_20250703_1'});
+            layer.bindTooltip(
+                (layer.feature.properties['tree_id'] !== null ? ('<div class="tooltip">' + layer.feature.properties['tree_id'] + '</div>') : ''),
+                { permanent: true,
+                    offset: [-5, 0],
+                    className: 'css_kendal_trees_20250703_1'
+                });
             labels.push(layer);
             totalMarkers += 1;
-              layer.added = true;
-              addLabel(layer, i);
-              i++;
+            layer.added = true;
+            addLabel(layer, i);
+            i++;
         });
         resetLabels([layer_kendal_trees_20250703_1]);
         map.on("zoomend", function(){
-            resetLabels([layer_kendal_trees_20250703_1]);
+            if (map.getZoom() >= 20) {
+              document.getElementById('map').classList.add('treelabels')
+              resetLabels([layer_kendal_trees_20250703_1]);
+            }
+            else {
+              document.getElementById('map').classList.remove('treelabels')
+            }
         });
         map.on("layeradd", function(){
-            resetLabels([layer_kendal_trees_20250703_1]);
+            //resetLabels([layer_kendal_trees_20250703_1]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_kendal_trees_20250703_1]);
+            //resetLabels([layer_kendal_trees_20250703_1]);
         });
         </script>
     </body>

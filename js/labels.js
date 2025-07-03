@@ -1,10 +1,13 @@
 var hideLabel = function(label) {
-    label.labelObject.style.opacity = 0;
-    label.labelObject.style.transition = 'opacity 0s';
+    // never hide labels, and live with the clutter
+    // this shouldn't be too bad if we limit labels to high zoom levels only
+
+    //label.labelObject.style.opacity = 0;
+    //label.labelObject.style.transition = 'opacity 0s';
 };
 var showLabel = function(label) {
     label.labelObject.style.opacity = 1;
-    label.labelObject.style.transition = 'opacity 1s';
+    //label.labelObject.style.transition = 'opacity 1s';
 };
 labelEngine = new labelgun.default(hideLabel, showLabel);
 

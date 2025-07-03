@@ -169,12 +169,15 @@
 .leaflet-fade-anim .leaflet-tile {
 	will-change: opacity;
 	}
+
+/*
 .leaflet-fade-anim .leaflet-popup {
 	opacity: 0;
 	-webkit-transition: opacity 0.2s linear;
 	   -moz-transition: opacity 0.2s linear;
 	        transition: opacity 0.2s linear;
 	}
+*/
 .leaflet-fade-anim .leaflet-map-pane .leaflet-popup {
 	opacity: 1;
 	}
