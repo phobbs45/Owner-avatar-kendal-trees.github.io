@@ -1,9 +1,12 @@
-
+html, body, #map {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
 #map {
     background-color: #ffffff
-}
-html, body, #map {
-    overflow: hidden;
 }
 .col9{
     height: 100%!important;
@@ -13,16 +16,19 @@ html, body, #map {
     overflow: auto;
 }
 .info {
-    padding: 1em;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 11pt;
+    padding: 6px 8px;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-size: 125%;
+    line-height: 1;
     background-color:#f8f8f8 !important;
-    color: #444444 !important;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border-radius: 5px;
 }
 .info h2 {
-    margin: 0 0 1em;
+    margin: 0.5em 0;
+}
+.info table {
+    margin: 0.5em;
 }
 .leaflet-container {
     background: #fff;
@@ -32,20 +38,33 @@ html, body, #map {
     border-bottom: unset!important;
     border-top: unset!important;
 }
+.leaflet-popup-content-wrapper {
+    border-radius: 0;
+}
 .leaflet-popup-content{
     max-height: 70vh;
-    xmax-width: 70vw;
-    font-size: 15pt;
+    max-width: 70vw;
 }
 .leaflet-popup-content.media{
     width: auto!important;
     height: auto!important;
 }
+.leaflet-popup-content h3 {
+    margin: 0.5em 0;
+    text-transform:uppercase;
+    font-weight:bold;
+    font-size:112%;
+}
+.leaflet-popup-content h4 {
+    margin: 0.5em 0 0;
+}
+.leaflet-popup-content p {
+    margin: 0;
+}
 .leaflet-popup-content th {
-    text-align: right;
+    text-align: left;
     vertical-align: top;
     min-width: 75px;
-    padding-right: 0.3em;
 }
 .leaflet-popup-content td {
     min-width: 75px;
@@ -53,6 +72,18 @@ html, body, #map {
 .leaflet-popup-content td img {
     max-height: 60vh;
     max-width: 60vw;
+}
+
+.leaflet-popup {
+    background: rgba(255, 255, 255, 1.0) !important;
+    border: none;
+}
+.leaflet-popup h3 {
+    font-weight: bold;
+    margin: 0;
+}
+.leaflet-popup p {
+    margin: 0;
 }
 
 .leaflet-tooltip {
@@ -63,14 +94,11 @@ html, body, #map {
 .leaflet-tooltip-left:before, .leaflet-tooltip-right:before {
     border: 0px;
 }
-.fa, .leaflet-container, a {
-    color: #444444 !important;
-}
+
 .leaflet-control-zoom-in, .leaflet-control-zoom-out,
 .leaflet-control-locate a,
-.leaflet-touch .leaflet-control-geocoder-icon,
 .leaflet-control-search .search-button,
-    .leaflet-control-measure {
+ .leaflet-control-measure {
     background-color: #f8f8f8 !important;
     border-radius: 0px !important;
     color: #444444 !important;
@@ -105,6 +133,9 @@ html, body, #map {
 }
 .leaflet-control-attribution a {
     color: #0078A8 !important;
+}
+.leaflet-container .leaflet-control-attribution {
+	background: rgba(255, 255, 255, 1.0);
 }
 .leaflet-control-scale-line {
     border: 2px solid #f8f8f8 !important;
@@ -166,7 +197,7 @@ html, body, #map {
 }
 .leaflet-control-layers-expanded {
     padding-left: 6px;
-}	
+}    
 .leaflet-control-layers-expanded .leaflet-control-layers-toggle {
     display: block;
     background-image: none;
@@ -191,11 +222,14 @@ html, body, #map {
     z-index: 700;
 }
 
+
+/* For kendal-trees */
+
 #map .tooltip {
     display: none;
     color: #fff;
     text-shadow: #000 0 0 10px;
-    font-size: 15pt;
+    font-size: 12pt;
     font-family: "Open Sans", sans-serif;
 }
 #map.treelabels .tooltip {
