@@ -233,7 +233,7 @@ fid,y,x,tree_id,species,health,notes
 232,42.4727097,-76.4879479,232,Littleleaf Linden,5,
 233,42.4727029,-76.48786177,233,Littleleaf Linden,4,Leaf color problem
 234,42.47277382,-76.48787615,234,White Fir,5,Edward Thompson
-235,42.47277678,-76.48780393,235,Red Oak,3,Charles Wilcox
+235,42.47277678,-76.48780393,235,Red Oak,0,Charles Wilcox
 236,42.47269722,-76.4877618,236,Littleleaf Linden,4,
 237,42.4727789,-76.48769413,237,Sugar Maple,5,Thomas Parks
 238,42.47276756,-76.48758031,238,White Fir,4,Alice Eklund
@@ -352,7 +352,7 @@ fid,y,x,tree_id,species,health,notes
 351,42.47283676,-76.48689127,351,Silver Maple,5,Thomas Eisner
 352,42.47285945,-76.48683744,352,Northern Red Oak,5,Donald Hall
 353,42.4729139,-76.48684206,353,Northern Red Oak,5,John Thompson
-354,42.47285241,-76.48673401,354,Tulip Tree,5,
+354,42.47285241,-76.48673401,354,Tulip Tree,5,Regina Macharia Memorial Tree
 355,42.47257215,-76.48650029,355,Bradford Pear,5,
 356,42.47252028,-76.4863973,356,Black Locust,3,
 357,42.47183204,-76.48646964,357,Red Spruce,3,
