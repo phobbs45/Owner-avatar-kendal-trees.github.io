@@ -174,9 +174,9 @@ fid,y,x,tree_id,species,health,notes
 173,42.47360133,-76.48945473,173,Swamp Oak,5,
 174,42.47341634,-76.48936257,174,Honey Locust,5,
 175,42.4732269,-76.48917674,175,Honey Locust,5,
-176,42.47317142,-76.48906451,176,American Sycamore,2,
-177,42.47305471,-76.48897624,177,American Sycamore,0,
-178,42.47298182,-76.48886221,178,American Sycamore,0,
+176,42.47317142,-76.48906451,176,American Sycamore,3,recovered from anthracnose
+177,42.47305471,-76.48897624,177,American Sycamore,3,topped this tree
+178,42.47298182,-76.48886221,178,American Sycamore,3,topped this tree
 179,42.47288327,-76.48874153,179,Box Elder,5,
 180,42.47274534,-76.48874829,180,Hawthorn,5,Cockspur
 181,42.47272723,-76.48868473,181,Hawthorn,5,Cockspur
@@ -199,8 +199,8 @@ fid,y,x,tree_id,species,health,notes
 198,42.47269581,-76.48845816,198,Box Elder,5,
 199,42.47271235,-76.48851477,199,Pin Oak,4,
 200,42.47268478,-76.48855109,200,Red Maple,5,
-201,42.47281067,-76.4885462,201,Red Maple,3,Leaf disease
-202,42.47278684,-76.48845545,202,Red Maple,4,
+201,42.47281067,-76.4885462,201,Red Maple,0,leaves browned and dropped off
+202,42.47278684,-76.48845545,202,Red Maple,2,leaves browned
 203,42.47276075,-76.48834779,203,Red Maple,5,Leaf disease
 204,42.47265484,-76.48819326,204,Pin Oak,5,
 205,42.47248118,-76.48821873,205,Burr Oak,4,
@@ -230,11 +230,11 @@ fid,y,x,tree_id,species,health,notes
 229,42.47260441,-76.48802236,229,Box Elder,5,
 230,42.47260896,-76.48804532,230,Ash,4,New growth bush
 231,42.47262315,-76.48807844,231,Ash,4,New growth bush
-232,42.4727097,-76.4879479,232,Littleleaf Linden,5,
-233,42.4727029,-76.48786177,233,Littleleaf Linden,4,Leaf color problem
+232,42.4727097,-76.4879479,232,Littleleaf Linden,3,
+233,42.4727029,-76.48786177,233,Littleleaf Linden,3,Leaf color problem
 234,42.47277382,-76.48787615,234,White Fir,5,Edward Thompson
 235,42.47277678,-76.48780393,235,Red Oak,0,Charles Wilcox
-236,42.47269722,-76.4877618,236,Littleleaf Linden,4,
+236,42.47269722,-76.4877618,236,Littleleaf Linden,2,leaves damaged by Japanese beetles
 237,42.4727789,-76.48769413,237,Sugar Maple,5,Thomas Parks
 238,42.47276756,-76.48758031,238,White Fir,4,Alice Eklund
 239,42.47279138,-76.48747419,239,Silver Maple,5,
@@ -390,9 +390,9 @@ fid,y,x,tree_id,species,health,notes
 389,42.47376019,-76.48587771,389,Amur Maple,4,Poor Drainage
 390,42.4736877,-76.48582319,390,Japanese Lilac Tree,1,Leaf problem
 391,42.47372984,-76.48580098,391,Japanese Lilac Tree,3,
-392,42.47387908,-76.48564228,392,Sweet Gum,2,Just leafing out
-393,42.47388962,-76.4855788,393,American Sycamore,0,
-394,42.47391771,-76.48556928,394,Sweet Gum,2,Just leafing out
+392,42.47387908,-76.48564228,392,Sweet Gum,4,leafed out later
+393,42.47388962,-76.4855788,393,American Sycamore,3,topped this tree
+394,42.47391771,-76.48556928,394,Sweet Gum,4,leafed out later
 395,42.47422985,-76.48546398,395,Ash,5,Green
 396,42.4743535,-76.48537631,396,Ash,5,White. Ash borer?
 397,42.47453274,-76.4855255,397,Red Pine,2,
